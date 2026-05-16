@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Functions
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+
+    function isValidReservation(data) {
+      return data.fullName is string && data.fullName.size() <= 100 &&
+             data.email is string && data.email.size() <= 100 &&
+             data.phone is string && data.phone.size() <= 20 &&
+             data.date is string && data.date.size() <= 20 &&
+             data.time is string && data.time.size() <= 10 &&
+             data.guests is number && data.guests >= 1 && data.guests <= 20 &&
+             data.seating in ['indoor', 'outdoor'] &&
+             data.status in ['pending', 'confirmed', 'cancelled'];
+    }
+
+    function isValidOrder(data) {
+      return data.items is list && data.items.size() > 0 &&
+             data.total is number && data.total >= 0 &&
+             data.status in ['pending', 'preparing', 'ready', 'delivered'] &&
+             data.customerName is string && data.customerName.size() <= 100 &&
+             data.customerEmail is string && data.customerEmail.size() <= 100;
+    }
+
+    // Collections
+    match /reservations/{reservationId} {
+      allow create: if isValidReservation(incoming());
+      allow update: if isAdmin() || (
+        // Guests can only cancel their own if they have token match, 
+        // but for now let's just allow admin updates
+        isAdmin() && isValidReservation(incoming())
+      );
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow create: if isValidOrder(incoming());
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+      allow update: if isAdmin() && isValidOrder(incoming());
+    }
+
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && request.auth.uid == adminId;
+      allow write: if false; // Only manageable via console
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "Reservation": {
+      "title": "Reservation",
+      "description": "A table reservation at the restaurant.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "guests": { "type": "number" },
+        "seating": { "type": "string", "enum": ["indoor", "outdoor"] },
+        "specialRequests": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["fullName", "email", "phone", "date", "time", "guests", "seating", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A food and drink order.",
+      "type": "object",
+      "properties": {
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "preparing", "ready", "delivered"] },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["items", "total", "status", "customerName", "customerEmail", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Collection of table reservations."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer orders."
+    }
+  }
+}
