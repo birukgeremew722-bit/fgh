@@ -30,6 +30,53 @@ interface FirebaseContextType {
 
 const FirebaseContext = createContext<FirebaseContextType | undefined>(undefined);
 
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: {
+    userId?: string | null;
+    email?: string | null;
+    emailVerified?: boolean | null;
+    isAnonymous?: boolean | null;
+    tenantId?: string | null;
+    providerInfo?: {
+      providerId?: string | null;
+      email?: string | null;
+    }[];
+  }
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+      isAnonymous: auth.currentUser?.isAnonymous,
+      tenantId: auth.currentUser?.tenantId,
+      providerInfo: auth.currentUser?.providerData?.map(provider => ({
+        providerId: provider.providerId,
+        email: provider.email,
+      })) || []
+    },
+    operationType,
+    path
+  }
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
+
 export function FirebaseProvider({ children }: { children: React.ReactNode }) {
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -71,6 +118,9 @@ export function FirebaseProvider({ children }: { children: React.ReactNode }) {
       (snapshot) => {
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Order));
         setOrders(data);
+      },
+      (error) => {
+        handleFirestoreError(error, OperationType.LIST, 'orders');
       }
     );
 
@@ -100,12 +150,17 @@ export function FirebaseProvider({ children }: { children: React.ReactNode }) {
   };
 
   const createOrder = async (order: Omit<Order, 'id' | 'status' | 'createdAt'>) => {
-    const docRef = await addDoc(collection(db, 'orders'), {
-      ...order,
-      status: 'pending',
-      createdAt: serverTimestamp()
-    });
-    return docRef.id;
+    try {
+      const docRef = await addDoc(collection(db, 'orders'), {
+        ...order,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
+      return docRef.id;
+    } catch (error) {
+      handleFirestoreError(error, OperationType.CREATE, 'orders');
+      return '';
+    }
   };
 
   const updateReservationStatus = async (id: string, status: ReservationStatus) => {
@@ -119,7 +174,11 @@ export function FirebaseProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateOrderStatus = async (id: string, status: OrderStatus) => {
-    await updateDoc(doc(db, 'orders', id), { status });
+    try {
+      await updateDoc(doc(db, 'orders', id), { status });
+    } catch (error) {
+      handleFirestoreError(error, OperationType.UPDATE, `orders/${id}`);
+    }
   };
 
   return (

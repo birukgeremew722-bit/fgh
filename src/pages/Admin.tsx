@@ -46,7 +46,7 @@ export default function Admin() {
             <LayoutDashboard size={32} />
           </div>
           <h2 className="text-3xl font-serif text-white mb-4 italic">The Master’s Sanctum.</h2>
-          <p className="text-stone-500 mb-10 text-sm font-light leading-relaxed">This terminal is reserved for L'Aurum elite leadership. Authentic credentials are required to oversee the pulse of the atelier.</p>
+          <p className="text-stone-500 mb-10 text-sm font-light leading-relaxed">This terminal is reserved for Aladdin elite leadership. Authentic credentials are required to oversee the pulse of the atelier.</p>
           <button onClick={login} className="gold-button px-16 py-5 mx-auto">Digitally Authenticate</button>
         </motion.div>
       </div>
@@ -60,7 +60,7 @@ export default function Admin() {
         <div className="mb-12">
           <h2 className="text-lg font-serif italic text-white flex items-center gap-3">
              <div className="w-2 h-2 bg-gold rounded-full" />
-             L'Aurum Console
+             Aladdin Console
           </h2>
         </div>
 

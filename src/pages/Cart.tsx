@@ -70,7 +70,7 @@ export default function Cart() {
     <div className="pt-32 pb-40 px-10 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-20">
-          <Link to="/" className="text-stone-500 hover:text-white transition-all uppercase text-[10px] tracking-widest font-bold">L'Aurum</Link>
+          <Link to="/" className="text-stone-500 hover:text-white transition-all uppercase text-[10px] tracking-widest font-bold">Aladdin</Link>
           <ChevronRight size={10} className="text-stone-700" />
           <span className="text-gold font-serif italic text-xl">The Curated Selection</span>
         </div>

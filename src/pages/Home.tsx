@@ -11,23 +11,22 @@ export default function Home() {
   const featuredDishes = MENU_ITEMS.filter(item => item.popular).slice(0, 3);
 
   return (
-    <div className="relative">
-      {/* Cinematic Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div 
-          style={{ y: y1, opacity }}
-          className="absolute inset-0 z-0"
-        >
-          <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80" 
-            className="w-full h-full object-cover scale-110 brightness-[0.3]"
-            alt="Aladdin Restaurant Addis Ababa"
-          />
-        </motion.div>
-        
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#0a0a0a] z-[1]" />
+    <div className="relative min-h-screen bg-stone-950">
+      {/* Fixed Background Layer */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <img 
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80" 
+          className="w-full h-full object-cover brightness-[0.15]"
+          alt="Aladdin Background"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80" />
+        <div className="absolute inset-0 cinematic-vignette opacity-60" />
+      </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+      <div className="relative z-10">
+        {/* Cinematic Hero */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="relative z-10 text-center px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -200,12 +199,17 @@ export default function Home() {
                     </span>
                     Open Daily: 12:00 PM - 11:30 PM
                   </p>
-                  <p className="flex items-center gap-4">
-                    <span className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+                  <a 
+                    href="https://maps.app.goo.gl/42CEd8RSY61qwVKE6" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 hover:text-gold transition-colors group"
+                  >
+                    <span className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all">
                        <MapPin size={18} />
                     </span>
-                    Bole Area, Addis Ababa, Ethiopia
-                  </p>
+                    <span>Bole Area, Addis Ababa, Ethiopia</span>
+                  </a>
                </div>
             </motion.div>
 
@@ -246,5 +250,6 @@ export default function Home() {
          </motion.div>
       </section>
     </div>
-  );
+  </div>
+);
 }

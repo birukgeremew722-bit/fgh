@@ -1,135 +1,130 @@
 import { MenuItem } from './types';
 
 export const MENU_ITEMS: MenuItem[] = [
-  // Starters
+  // Mezze (Starters)
   {
     id: 's1',
-    name: 'Truffle Fries',
-    description: 'Crispy golden fries tossed in white truffle oil, topped with aged Parmesan and fresh parsley.',
-    price: 14,
+    name: 'Hummus',
+    description: 'Creamy chickpea puree with tahini, lemon juice, and extra virgin olive oil.',
+    price: 15,
     category: 'Starters',
-    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=800&q=80',
     popular: true
   },
   {
     id: 's2',
-    name: 'Crispy Calamari',
-    description: 'Tender calamari rings, lightly battered and fried, served with a zesty lemon aioli.',
-    price: 18,
+    name: 'Moutabal',
+    description: 'Smoky grilled eggplant puree with tahini, garlic, and a drizzle of pomegranate molasses.',
+    price: 16,
     category: 'Starters',
-    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80'
   },
   {
     id: 's3',
-    name: 'Garlic Bread Supreme',
-    description: 'Artisanal loaf toasted with garlic confit butter, mozzarella, and a hint of rosemary.',
-    price: 12,
+    name: 'Tabouleh',
+    description: 'Traditional Lebanese salad with finely chopped parsley, tomatoes, mint, onion, and bulgur.',
+    price: 14,
     category: 'Starters',
-    image: 'https://images.unsplash.com/photo-1619535814782-b3d00f73571d?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80',
+    popular: true
   },
   {
     id: 's4',
-    name: 'Hummus & Pita',
-    description: 'Creamy chickpea puree with tahini, olive oil, and fresh warm pita bread.',
-    price: 15,
+    name: 'Fattoush',
+    description: 'Zesty salad with mixed greens, radishes, cucumbers, and toasted pita bread with sumac dressing.',
+    price: 14,
     category: 'Starters',
-    image: 'https://images.unsplash.com/photo-1574071318508-1cdbad80ad38?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80'
+  },
+  {
+    id: 's5',
+    name: 'Fried Kibbeh',
+    description: 'Crispy cracked wheat shells stuffed with seasoned minced meat and toasted pine nuts.',
+    price: 18,
+    category: 'Starters',
+    image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80',
     popular: true
   },
-  // Main Courses
+  
+  // Main Courses (Grills & Specialties)
   {
     id: 'm1',
-    name: 'Wagyu Beef Burger',
-    description: 'Premium Wagyu patty, truffle mayo, caramelized onions, and Gruyère cheese on a brioche bun.',
-    price: 32,
+    name: 'Mixed Grill',
+    description: 'A grand selection of Shish Taouk, Lamb Kebab, and Kafta, served with garlic sauce and hummus.',
+    price: 45,
     category: 'Main Courses',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1544124499-58912cbddaad?w=800&q=80',
     popular: true
   },
   {
     id: 'm2',
-    name: 'Grilled Salmon',
-    description: 'Atlantic salmon fillet with citrus glaze, served over a bed of quinoa and seasonal greens.',
-    price: 38,
+    name: 'Shish Taouk',
+    description: 'Skewers of tender chicken breast marinated in yogurt and spices, grilled to perfection.',
+    price: 28,
     category: 'Main Courses',
-    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=800&q=80'
   },
   {
     id: 'm3',
-    name: 'Creamy Alfredo Pasta',
-    description: 'Handcrafted fettuccine in a rich Parmesan cream sauce with roasted garlic.',
-    price: 26,
+    name: 'Lamb Chops',
+    description: 'Premium marinated lamb chops grilled over open flame, served with roasted vegetables.',
+    price: 42,
     category: 'Main Courses',
-    image: 'https://images.unsplash.com/photo-1645112481338-350711cc955a?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80',
+    popular: true
   },
   {
     id: 'm4',
-    name: 'BBQ Steak',
-    description: 'Prime dry-aged ribeye with house-made smoky BBQ rub, served with roasted root vegetables.',
-    price: 52,
+    name: 'Sayadiyah',
+    description: 'Classic Lebanese fish and rice dish with caramelized onions, toasted pine nuts, and tahini sauce.',
+    price: 36,
     category: 'Main Courses',
-    image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80',
-    popular: true
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80'
   },
-  // Cocktails
+
+  // Beverages
   {
     id: 'c1',
-    name: 'Espresso Martini',
-    description: 'Premium vodka, fresh espresso, Coffee liqueur, and a touch of vanilla.',
-    price: 16,
+    name: 'Mint Lemonade',
+    description: 'Refreshing blend of fresh lemon juice, garden mint, and a touch of sweetness.',
+    price: 12,
     category: 'Cocktails',
-    image: 'https://images.unsplash.com/photo-1545438102-799c3991ffb2?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&q=80',
     popular: true
   },
   {
     id: 'c2',
-    name: 'Mojito',
-    description: 'White rum, fresh mint, lime juice, and sparkling soda over crushed ice.',
-    price: 14,
+    name: 'Arabic Coffee',
+    description: 'Traditional slow-brewed coffee with cardamom premium beans.',
+    price: 8,
     category: 'Cocktails',
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=800&q=80'
   },
   {
     id: 'c3',
-    name: 'Old Fashioned',
-    description: 'Small-batch bourbon, sugar cube, aromatic bitters, and orange zest.',
-    price: 18,
+    name: 'Arak',
+    description: 'Traditional Levantine unsweetened distilled spirit with an anise flavor.',
+    price: 22,
     category: 'Cocktails',
-    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1569701881644-2bcd94948831?w=800&q=80'
   },
-  {
-    id: 'c4',
-    name: 'Margarita',
-    description: 'Tequila blanco, Cointreau, fresh lime juice, and a salt rim.',
-    price: 15,
-    category: 'Cocktails',
-    image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=800&q=80'
-  },
+
   // Desserts
   {
     id: 'd1',
-    name: 'Chocolate Lava Cake',
-    description: 'Warm dark chocolate cake with a molten center, served with vanilla bean gelato.',
-    price: 14,
+    name: 'Baklawa Selection',
+    description: 'Assorted layers of filo pastry filled with pistachios and nuts, drizzled with orange blossom syrup.',
+    price: 18,
     category: 'Desserts',
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1519003722822-6d51ceec68be?w=800&q=80',
     popular: true
   },
   {
     id: 'd2',
-    name: 'Cheesecake',
-    description: 'New York style cheesecake with a berry compote and graham cracker crust.',
-    price: 12,
+    name: 'Mouhallabieh',
+    description: 'Creamy milk pudding scented with rose water and topped with crushed pistachios.',
+    price: 14,
     category: 'Desserts',
-    image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800&q=80'
-  },
-  {
-    id: 'd3',
-    name: 'Tiramisu',
-    description: 'Layers of espresso-soaked ladyfingers, mascarpone cream, and cocoa powder.',
-    price: 13,
-    category: 'Desserts',
-    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80',
-    popular: true
+    image: 'https://images.unsplash.com/photo-1579372781848-65586616fc73?w=800&q=80'
   }
 ];

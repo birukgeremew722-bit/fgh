@@ -21,6 +21,7 @@ export default function Footer() {
         <span>Weather: 18°C Clear</span>
       </div>
       <div className="hidden md:flex gap-8">
+        <a href="https://maps.app.goo.gl/42CEd8RSY61qwVKE6" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-all">Get Directions</a>
         <a href="#" className="hover:text-white transition-all">Privacy Policy</a>
         <a href="#" className="hover:text-white transition-all">Internal Access</a>
         <span>Aladdin Restaurant © 2026</span>

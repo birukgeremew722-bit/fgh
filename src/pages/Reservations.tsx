@@ -66,7 +66,7 @@ export default function Reservations() {
           </div>
           <h2 className="text-4xl font-serif text-white mb-6 italic">Awaited Excellence.</h2>
           <p className="text-stone-400 mb-10 leading-relaxed">
-            Your table at L'Aurum has been provisionally reserved. Our Maître d' will contact you shortly at <strong>{formData.email}</strong> to finalize the arrangement.
+            Your table at Aladdin has been provisionally reserved. Our Maître d' will contact you shortly at <strong>{formData.email}</strong> to finalize the arrangement.
           </p>
           <button 
             onClick={() => window.location.href = '/'}
@@ -265,7 +265,7 @@ export default function Reservations() {
                                  className="w-full bg-transparent border-b border-white/10 pb-4 text-white focus:outline-none focus:border-gold transition-all"
                                  value={formData.fullName}
                                  onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                                 placeholder="Lorenzo d'Aurum"
+                                 placeholder="Aladdin Guest"
                                />
                             </div>
                             <div className="space-y-2">
