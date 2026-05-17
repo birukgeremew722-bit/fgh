@@ -55,12 +55,19 @@ export default function Chatbot() {
   return (
     <>
       {/* Trigger */}
-      <button
+      <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-10 right-10 w-16 h-16 bg-gold text-black rounded-full shadow-2xl flex items-center justify-center z-50 hover:scale-110 transition-transform duration-300 group"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ 
+          duration: 2.5, 
+          repeat: Infinity, 
+          ease: "easeInOut" 
+        }}
+        whileHover={{ scale: 1.1, y: 0 }}
+        className="fixed bottom-10 right-10 w-16 h-16 bg-gold text-black rounded-full shadow-2xl flex items-center justify-center z-50 transition-transform duration-300 group"
       >
         <MessageSquare size={24} className="group-hover:rotate-12 transition-transform" />
-      </button>
+      </motion.button>
 
       {/* Panel */}
       <AnimatePresence>

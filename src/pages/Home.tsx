@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowRight, Star, Clock, Utensils, GlassWater, ChefHat, MapPin } from 'lucide-react';
+import { ArrowRight, Star, Clock, Utensils, GlassWater, ChefHat, MapPin, Phone, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../data';
 
@@ -33,7 +33,7 @@ export default function Home() {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <span className="text-[10px] md:text-xs font-bold tracking-[0.6em] text-gold uppercase mb-8 block">
-              Lebanese & International Cuisine • Addis Ababa
+              Lebanese & International Menu • Addis Ababa
             </span>
             <h1 className="text-7xl md:text-[12rem] font-serif leading-[0.8] text-white tracking-tighter mb-12 select-none">
               ALADDIN <br/> 
@@ -105,9 +105,9 @@ export default function Home() {
                 className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5"
              >
                 <img 
-                  src="https://images.unsplash.com/photo-1550966842-28c460301392?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=800&q=80" 
                   className="w-full h-full object-cover"
-                  alt="Chef at Work"
+                  alt="Master Chef in Action"
                 />
                 <div className="absolute inset-0 bg-gold/10 mix-blend-overlay" />
              </motion.div>
@@ -200,6 +200,37 @@ export default function Home() {
                     Open Daily: 12:00 PM - 11:30 PM
                   </p>
                   <a 
+                    href="tel:+251116616641" 
+                    className="flex items-center gap-4 hover:text-gold transition-colors group"
+                  >
+                    <motion.span 
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all"
+                    >
+                       <Phone size={18} />
+                    </motion.span>
+                    <span>+251 11 661 6641</span>
+                  </a>
+                  <a 
+                    href="sms:+251116616641" 
+                    className="flex items-center gap-4 hover:text-gold transition-colors group"
+                  >
+                    <motion.span 
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        ease: "easeOut",
+                        repeatType: "mirror"
+                      }}
+                      className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all"
+                    >
+                       <MessageSquare size={18} />
+                    </motion.span>
+                    <span>Send us a text</span>
+                  </a>
+                  <a 
                     href="https://maps.app.goo.gl/42CEd8RSY61qwVKE6" 
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -217,17 +248,30 @@ export default function Home() {
                initial={{ opacity: 0, scale: 0.95 }}
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
-               className="h-[500px] rounded-3xl overflow-hidden border border-white/5 grayscale hover:grayscale-0 transition-all duration-700"
+               className="h-[500px] rounded-3xl flex items-center justify-center border border-white/5 bg-stone-900/50 relative group overflow-hidden"
             >
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15762.59779374005!2d38.7758079871582!3d9.006616400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b850ef3b433af%3A0xc47e3a968607174b!2sAladdin%20Restaurant!5e0!3m2!1sen!2set!4v1715843485012!5m2!1sen!2set" 
-                 width="100%" 
-                 height="100%" 
-                 style={{ border: 0 }} 
-                 allowFullScreen 
-                 loading="lazy" 
-                 referrerPolicy="no-referrer-when-downgrade"
+               <img 
+                 src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?w=800&q=80" 
+                 className="absolute inset-0 w-full h-full object-cover opacity-20 scale-110 group-hover:scale-100 transition-transform duration-1000"
+                 alt="Map Background"
                />
+               <div className="absolute inset-0 bg-stone-900/40" />
+               
+               <a 
+                 href="https://maps.app.goo.gl/42CEd8RSY61qwVKE6" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="relative z-10 flex flex-col items-center gap-6 group"
+               >
+                 <motion.div
+                   animate={{ y: [0, -8, 0] }}
+                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                   className="w-24 h-24 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all duration-500 shadow-[0_0_50px_rgba(191,155,48,0.1)]"
+                 >
+                   <MapPin size={48} strokeWidth={1} />
+                 </motion.div>
+                 <span className="text-xs font-bold uppercase tracking-[0.4em] text-white opacity-40 group-hover:text-gold group-hover:opacity-100 transition-all">Launch Navigator</span>
+               </a>
             </motion.div>
           </div>
         </div>

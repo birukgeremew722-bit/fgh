@@ -20,7 +20,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Reservations', path: '/reservations' },
-    { name: 'Cuisine', path: '/restaurant' },
+    { name: 'Menu', path: '/restaurant' },
     { name: 'Admin', path: '/admin' },
   ];
 
